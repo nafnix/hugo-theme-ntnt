@@ -1,0 +1,30 @@
+<div @click.stop class="flex w-full items-center md:relative md:w-max">
+  <button
+    class="hidden md:flex md:items-center"
+    @click="isOpenThemeDialog = !isOpenThemeDialog"
+  >
+    <span class="icon-[tabler--sun] text-xl dark:icon-[tabler--moon]"></span>
+  </button>
+
+  {{/* 实际传递非 dark 值的结果都是将主题设置为 light */}}
+  <ul class="select-theme" :class="{ 'active' : isOpenThemeDialog }">
+    <li
+      :class="{ active: currentTheme === 'light' }"
+      @click="applyTheme('light')"
+    >
+      <span class="icon-[tabler--sun]"></span>
+      <span>亮色</span>
+    </li>
+    <li
+      :class="{ active: currentTheme === 'dark' }"
+      @click="applyTheme('dark')"
+    >
+      <span class="icon-[tabler--moon]"></span>
+      <span>暗色</span>
+    </li>
+    <li :class="{ active: !currentTheme }" @click="applyTheme()">
+      <span class="icon-[tabler--device-desktop]"></span>
+      <span>跟随系统</span>
+    </li>
+  </ul>
+</div>

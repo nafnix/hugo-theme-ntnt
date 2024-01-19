@@ -1,0 +1,12 @@
+{{ define "main" }}
+  <ul class="tags">
+    {{ range .Data.Terms.Alphabetical }}
+      <li>
+        <a href="{{ .Page.Permalink }}" class="transition hover:shadow-md">
+          <span class="icon-[tabler--tag] text-sm"></span>{{ .Page.Title }}
+          {{/*  <span>{{ .Count }}</span>  */}}
+        </a>
+      </li>
+    {{ end }}
+  </ul>
+{{ end }}

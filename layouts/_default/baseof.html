@@ -1,0 +1,42 @@
+<!doctype html>
+<html
+  lang="{{ or site.Language.LanguageCode site.Language.Lang }}"
+  dir="{{ or site.Language.LanguageDirection `ltr` }}"
+>
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+
+  <body>
+    <div id="app" class="flex min-h-full flex-col">
+      {{ partial "header/index.html" . }}
+
+
+      <div class="container grid grid-cols-1 gap-4 py-8 md:grid-cols-5">
+        {{ partial "left-side.html" . }}
+        <main class="{{ .Kind }}-page md:col-span-4">
+          {{ block "main" . }}{{ end }}
+        </main>
+      </div>
+
+      {{ partial "footer.html" . }}
+    </div>
+  </body>
+
+  {{- with resources.Get "js/_main.js" }}
+    {{- if eq hugo.Environment "development" }}
+      {{- with . | js.Build }}
+        <script src="{{ .RelPermalink }}"></script>
+      {{- end }}
+    {{- else }}
+      {{- $opts := dict "minify" true }}
+      {{- with . | js.Build $opts | fingerprint }}
+        <script
+          src="{{ .RelPermalink }}"
+          integrity="{{- .Data.Integrity }}"
+          crossorigin="anonymous"
+        ></script>
+      {{- end }}
+    {{- end }}
+  {{- end }}
+</html>

@@ -1,0 +1,12 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# node
+node_modules
+.pnpm-store
+
+# Hugo
+.hugo_build.lock
+public
+content

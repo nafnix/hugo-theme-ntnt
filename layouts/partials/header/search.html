@@ -1,0 +1,49 @@
+<div @click.stop class="relative">
+  <div class="search" :class="{ 'active' : isSearching }">
+    <div @keyup.enter="search" class="search-box">
+      <button class="search-btn icon-[tabler--search]" @click="search"></button>
+      <input type="text" ref="searchInput" class="search-input" />
+
+      {{/* dark:bg-surface-variant-dark bg-surface-variant */}}
+    </div>
+
+    <button @click="isSearching = false" class="search-close-btn">
+      <span class="icon-[tabler--x] flex items-center"></span>
+    </button>
+  </div>
+
+  <div
+    class="absolute right-0 top-12 mt-1 w-full overflow-hidden rounded border bg-surface shadow-2xl dark:bg-surface-dark md:w-96"
+    v-if="isSearching && searchResult.searched"
+  >
+    <ul class="max-h-96 overflow-y-auto">
+      <li v-for="result in searchResult.results">
+        <a
+          :href="result.item.permalink"
+          class="block p-4 hover:bg-neutral-95 dark:hover:bg-neutral-30"
+        >
+          <strong class="line-clamp-1 text-lg">
+            [[ result.item.title ]]
+          </strong>
+          <p class="line-clamp-2 text-neutral-50">[[ result.item.contents ]]</p>
+        </a>
+      </li>
+    </ul>
+
+    <div
+      class="flex bg-surface-variant p-2 text-on-surface-variant dark:bg-surface-variant-dark dark:text-on-surface-variant-dark"
+    >
+      <span>找到 [[ searchResult.results.length ]] 条结果</span>
+      <span class="ml-auto">
+        Search by
+        <a
+          href="https://www.fusejs.io/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline decoration-1"
+          >Fuse.js</a
+        ></span
+      >
+    </div>
+  </div>
+</div>

@@ -1,0 +1,437 @@
+@import "./m3/tokens.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "fantasque";
+    src: url("/font/FantasqueSansMono/FantasqueSansMNerdFont-Regular.ttf");
+  }
+
+  @font-face {
+    font-family: "霞鹜文楷等宽";
+    src: url("/font/lxgw-wenkai-v1.315/LXGWWenKaiMono-Regular.ttf");
+  }
+
+  html,
+  body {
+    @apply h-full;
+  }
+
+  body {
+    @apply bg-surface text-on-surface dark:bg-surface-dark dark:text-on-surface-dark;
+  }
+
+  * {
+    @apply border-outline dark:border-outline-dark;
+  }
+
+  code {
+    font-family: fantasque, 霞鹜文楷等宽;
+  }
+
+  ::-webkit-scrollbar {
+    @apply h-2 w-2;
+  }
+
+  /* 滚轮背景 */
+  /* ::-webkit-scrollbar-track {
+    @apply rounded-full;
+  } */
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-variant dark:bg-surface-variant-dark;
+    @apply rounded-full;
+  }
+}
+
+@layer components {
+  .container {
+    @apply w-full md:max-w-[48rem] lg:max-w-[56rem] xl:max-w-[64rem] 2xl:max-w-[72rem];
+    @apply mx-auto px-4;
+  }
+
+  .navbar a {
+    @apply block py-2 text-center;
+
+    &:hover,
+    &.active {
+      @apply text-secondary dark:text-secondary-dark;
+    }
+  }
+
+  .select-theme {
+    @apply grid flex-1 grid-cols-3;
+
+    @screen md {
+      & {
+        @apply absolute top-full hidden w-32 space-y-1 overflow-hidden rounded-md border bg-surface py-1 dark:bg-surface-dark;
+      }
+
+      &.active {
+        @apply block;
+      }
+    }
+
+    li {
+      @apply flex w-full cursor-pointer items-center justify-center gap-x-2 py-1 md:justify-start md:px-3;
+
+      &:hover {
+        @apply bg-black/5 dark:bg-white/5;
+      }
+
+      &.active {
+        @apply text-primary dark:text-primary-dark;
+      }
+
+      :first-child {
+        @apply text-xl;
+      }
+      :last-child {
+        @apply text-[0.95rem];
+      }
+    }
+  }
+
+  .search {
+    @apply flex rounded-sm border px-2 md:border-0 md:px-0;
+
+    .search-box {
+      @apply flex flex-1 items-center overflow-hidden rounded;
+
+      .search-btn {
+        @apply mr-2 text-xl transition-all;
+      }
+
+      .search-input {
+        @apply w-full bg-inherit py-1 outline-none md:w-0 md:transition-all;
+      }
+    }
+
+    .search-close-btn {
+      @apply pl-2 md:hidden;
+    }
+
+    @screen md {
+      &.active {
+        @apply bg-surface-variant px-2 dark:bg-surface-variant-dark;
+
+        .search-btn {
+          @apply text-base;
+        }
+
+        .search-input {
+          @apply block w-56;
+        }
+
+        .search-close-btn {
+          @apply block;
+        }
+      }
+    }
+  }
+
+  .contact > div {
+    @apply flex gap-x-2;
+
+    dt {
+      @apply flex items-center;
+    }
+  }
+
+  .markdown {
+    @apply space-y-4 text-lg;
+
+    h1 {
+      @apply text-3xl;
+
+      &:hover::after {
+        content: "#1";
+      }
+    }
+
+    h2 {
+      @apply text-2xl;
+
+      &:hover::after {
+        content: "#2";
+      }
+    }
+
+    h1,
+    h2 {
+      @apply border-b border-surface-variant pb-2 dark:border-surface-variant-dark;
+    }
+
+    h3 {
+      @apply text-xl;
+
+      &:hover::after {
+        content: "#3";
+      }
+    }
+
+    h4 {
+      @apply text-lg;
+
+      &:hover::after {
+        content: "#4";
+      }
+    }
+
+    h5 {
+      @apply text-base;
+
+      &:hover::after {
+        content: "#5";
+      }
+    }
+
+    h6 {
+      @apply text-sm;
+
+      &:hover::after {
+        content: "#6";
+      }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @apply mt-5;
+
+      &:hover::after {
+        @apply ml-1 align-bottom text-xs text-neutral-70 dark:text-neutral-35;
+      }
+    }
+
+    p {
+      @apply break-all;
+    }
+
+    pre {
+      @apply py-2;
+    }
+
+    .highlight {
+      @apply relative w-full overflow-hidden rounded-lg;
+
+      /* 如果不显示行号 */
+      > pre {
+        @apply px-3;
+      }
+
+      > div {
+        @apply overflow-x-auto;
+      }
+
+      .copy-btn {
+        @apply bg-secondary-container dark:bg-secondary-container-dark;
+        @apply text-secondary-on-container dark:text-secondary-on-container-dark;
+        @apply absolute right-2 top-1 flex items-center gap-x-1 rounded-lg border px-2 text-sm;
+
+        opacity: 0;
+        transition: opacity 0.15s ease-in-out;
+      }
+
+      &:hover {
+        .copy-btn {
+          opacity: 1;
+        }
+      }
+    }
+
+    hr {
+      @apply !my-8 border-2;
+    }
+
+    ol {
+      @apply list-decimal;
+    }
+
+    ul {
+      @apply list-disc;
+    }
+
+    ol,
+    ul {
+      @apply space-y-4 pl-7;
+
+      li {
+        &::marker {
+          @apply text-neutral-70 dark:text-neutral-35;
+        }
+
+        @apply space-y-2;
+      }
+
+      ol {
+        list-style-type: lower-roman;
+      }
+
+      ul {
+        list-style-type: circle;
+      }
+
+      ol,
+      ul {
+        ol {
+          list-style-type: lower-alpha;
+        }
+
+        ul {
+          list-style-type: square;
+        }
+      }
+    }
+
+    sup {
+      @apply ml-[0.05rem] text-primary dark:text-primary-dark;
+
+      &::before {
+        content: "[";
+      }
+      &::after {
+        content: "]";
+      }
+    }
+
+    /* 行内代码 */
+    :not(pre) > code {
+      @apply bg-secondary-container text-secondary-on-container dark:bg-secondary-container-dark dark:text-secondary-on-container-dark;
+      @apply select-all rounded px-2 py-[0.125rem];
+      position: absolute;
+      /* cursor: pointer; */
+    }
+
+    /*
+      除了代码行号、h1-h6、文内脚注、页脚脚注、图片的超链接添加样式
+      */
+    :not(code > span, h1, h2, h3, h4, h5, h6, sup, li[id^="fn:"] > p)
+      > a:not(.image) {
+      @apply text-tertiary dark:text-tertiary-dark;
+      word-wrap: break-word;
+
+      &::after {
+        content: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="16" height="16" viewBox="0 0 24 24"%3E%3Cpath fill="none" stroke="%236c98a1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6m-7 1l9-9m-5 0h5v5"%2F%3E%3C%2Fsvg%3E');
+      }
+    }
+
+    > table {
+      @apply w-full border-collapse border;
+
+      th,
+      td {
+        @apply border px-3 py-2;
+      }
+
+      th {
+        @apply h-10;
+      }
+    }
+
+    blockquote {
+      @apply border-l-4 pl-4 text-neutral-variant-50;
+    }
+
+    a.image {
+      @apply flex justify-center;
+    }
+
+    .footnotes {
+      @apply text-sm text-neutral-variant-40 dark:text-neutral-variant-60;
+    }
+
+    iframe {
+      @apply mx-auto max-w-full;
+    }
+
+    @screen sm {
+    }
+
+    @screen md {
+    }
+
+    @screen lg {
+    }
+
+    @screen xl {
+    }
+
+    @screen 2xl {
+    }
+  }
+}
+
+.nt-md-meta {
+  @apply space-y-5;
+}
+
+.tags {
+  @apply flex flex-wrap gap-4;
+
+  li {
+    a {
+      @apply bg-neutral-98 text-secondary dark:bg-neutral-20 dark:text-secondary-dark;
+      @apply flex h-8 min-w-12 items-center justify-center gap-1 rounded-sm border px-2;
+
+      /* span:first-child {
+        @apply bg-[var(--md-sys-color-primary-light)] dark:bg-[var(--md-sys-color-primary-container-dark)];
+        @apply text-[var(--md-sys-color-on-primary-light)] dark:bg-[var(--md-sys-color-on-primary-container-dark)];
+
+        @apply rounded-l-lg px-3 py-1;
+      }
+      span:last-child {
+        @apply bg-[var(--md-sys-color-secondary-container-light)] dark:bg-[var(--md-sys-color-secondary-container-dark)];
+        @apply text-[var(--md-sys-color-on-secondary-container-light)] dark:bg-[var(--md-sys-color-on-secondary-container-dark)];
+
+        @apply rounded-r-lg px-2 py-1;
+      } */
+    }
+  }
+}
+
+.footer {
+  @apply mt-auto h-12 border-t bg-surface p-4 text-xs dark:bg-surface-dark;
+
+  a {
+    @apply text-primary dark:text-primary-dark;
+
+    &:hover {
+      @apply underline decoration-primary decoration-1 dark:decoration-primary-dark;
+    }
+  }
+}
+
+.pagination {
+  @apply mx-auto flex text-secondary dark:text-secondary-dark;
+
+  li {
+    @apply text-secondary dark:text-secondary-dark;
+
+    &:hover:not([class*="disabled"]) {
+      @apply rounded bg-secondary-container dark:bg-secondary-container-dark;
+    }
+
+    a {
+      @apply px-2;
+    }
+
+    &.disabled {
+      @apply text-surface-variant dark:text-surface-variant-dark;
+
+      a {
+        @apply hover:cursor-default;
+      }
+    }
+
+    &.active {
+      @apply text-primary underline decoration-primary decoration-1 dark:text-primary-dark dark:decoration-primary-dark;
+    }
+  }
+}

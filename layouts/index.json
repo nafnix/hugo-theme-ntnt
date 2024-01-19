@@ -1,0 +1,9 @@
+{{ $tmp := newScratch }}
+
+{{ $tmp.Add "results" slice }}
+
+{{ range .Site.RegularPages }}
+    {{ $tmp.Add "results" (dict "title" .Title "tags" .Params.tags "categories" .Params.categories "contents" .Plain "permalink" .Permalink) }}
+{{ end }}
+
+{{ $tmp.Get "results" | jsonify }}

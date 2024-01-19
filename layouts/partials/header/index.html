@@ -1,0 +1,31 @@
+<header
+  class="sticky top-0 z-50 border-b bg-surface-light/70 backdrop-blur dark:bg-surface-dark/70"
+>
+  <div
+    class="container flex flex-col items-center md:flex-row"
+    :class="[ isOpenMenu ? 'h-full' : 'h-12' ]"
+  >
+    <div class="z-50 flex h-12 w-full items-center md:w-max">
+      <h1 class="text-xl"><a href="/">{{ site.Title }}</a></h1>
+      <button
+        class="icon-[tabler--menu-2] ml-auto text-2xl md:hidden"
+        @click="isOpenMenu = !isOpenMenu"
+      ></button>
+    </div>
+
+    <menu
+      class="z-40 w-full flex-col-reverse items-center gap-2 md:ml-10 md:flex md:flex-1 md:flex-row"
+      :class="[ isOpenMenu ? 'flex' : 'hidden' ]"
+    >
+      {{ partial "header/navbar.html" (dict "menuID" "main" "page" .) }}
+
+
+      <div
+        class="flex w-full flex-col gap-2 text-on-surface-variant dark:text-on-surface-variant-dark md:ml-auto md:w-auto md:flex-row"
+      >
+        {{ partial "header/select-theme.html" . }}
+        {{ partial "header/search.html" . }}
+      </div>
+    </menu>
+  </div>
+</header>

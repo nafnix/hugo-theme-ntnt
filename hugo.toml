@@ -1,0 +1,57 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
+
+hasCJKLanguage = true
+paginate = 5
+
+[[menus.main]]
+name = '首页'
+pageRef = '/'
+weight = 10
+
+# [[menus.main]]
+# name = 'Posts'
+# pageRef = '/posts'
+# weight = 20
+
+[[menus.main]]
+name = '标签'
+pageRef = '/tags'
+weight = 20
+
+[module]
+  [module.hugoVersion]
+    extended = false
+    min = "0.116.0"
+
+[params.author]
+  # avatar = 'https://i.pravatar.cc/300'
+  email = ''
+
+  github = ''
+
+  bilibili = ''
+  bilibili_id = ''    # 如果有值，则直接链接到主页，否则，以搜索的方式链接
+
+  telegram = ''
+
+[markup.highlight]
+  style = 'nord'        # hugo 内置的代码高亮（chroma）主题名，当 noClasses 为 false 时，该值无效
+  # noClasses = false   # 当为 false 值时，作用等同于禁用 hugo 内置的主题
+  guessSyntax = true    # 语法猜测；建议开启
+  lineNos = true        # 显示行号；建议开启
+  anchorLineNos = true  # 给行号添加id；建议开启
+  # codeFences = false
+  # hl_Lines = ''
+  # hl_inline = false
+  # lineAnchors = ''
+  # lineNumbersInTable = true
+  # noHl = false
+  # tabWidth = 40
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[outputs]
+  home = ["HTML", "JSON"]

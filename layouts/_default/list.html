@@ -1,0 +1,56 @@
+{{ define "main" }}
+  <div class="flex flex-col gap-6">
+    <div class="flex flex-col gap-4">
+      {{ range .Paginator.Pages }}
+        <section
+          class="flex w-full flex-col gap-2 rounded-lg border p-6 transition hover:shadow-lg"
+        >
+          <h2>
+            <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+          </h2>
+
+          {{ if .GetTerms "tags" }}
+            <ul class="flex flex-wrap gap-2 text-sm">
+              {{ range .GetTerms "tags" }}
+                <li>
+                  <a
+                    href="{{ .RelPermalink }}"
+                    class="flex items-center gap-1 text-neutral-30 dark:text-neutral-70"
+                  >
+                    <span class="icon-[tabler--tag]"></span>
+                    {{ .LinkTitle }}
+                  </a>
+                </li>
+              {{ end }}
+            </ul>
+          {{ end }}
+
+          {{ if .Description }}
+            <p>
+              {{ .Description }}
+            </p>
+          {{ end }}
+
+
+          <footer class="flex">
+            <dl class="flex gap-2 text-sm">
+              <div title="发布日期" class="flex items-center gap-1">
+                <dt class="icon-[tabler--calendar-time]"></dt>
+                <dd>{{ .Date | time.Format "2006-01-02" }}</dd>
+              </div>
+              |
+              <div title="字数统计" class="flex items-center gap-1">
+                <dt class="icon-[tabler--chart-arcs]"></dt>
+                <dd>{{ .WordCount }}</dd>
+              </div>
+            </dl>
+
+            <a href="{{ .RelPermalink }}" class="ml-auto">阅读</a>
+          </footer>
+        </section>
+      {{ end }}
+    </div>
+
+    {{ template "_internal/pagination.html" . }}
+  </div>
+{{ end }}
