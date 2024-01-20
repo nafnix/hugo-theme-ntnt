@@ -305,8 +305,6 @@
     :not(pre) > code {
       @apply bg-secondary-container text-secondary-on-container dark:bg-secondary-container-dark dark:text-secondary-on-container-dark;
       @apply select-all rounded px-2 py-[0.125rem];
-      position: absolute;
-      /* cursor: pointer; */
     }
 
     /*

@@ -1671,10 +1671,6 @@ code {
     padding-top: 0.125rem;
     padding-bottom: 0.125rem;
   }
-  :not(pre) > code {
-    position: absolute;
-    /* cursor: pointer; */
-  }
   /*
       除了代码行号、h1-h6、文内脚注、页脚脚注、图片的超链接添加样式
       */
