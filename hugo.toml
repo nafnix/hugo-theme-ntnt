@@ -27,14 +27,12 @@ weight = 20
 
 [params.author]
   # avatar = 'https://i.pravatar.cc/300'
-  email = ''
-
+  # email = ''
+  telegram = ''
   github = ''
-
   bilibili = ''
   bilibili_id = ''    # 如果有值，则直接链接到主页，否则，以搜索的方式链接
-
-  telegram = ''
+  steam = ''
 
 [markup.highlight]
   style = 'nord'        # hugo 内置的代码高亮（chroma）主题名，当 noClasses 为 false 时，该值无效

@@ -1,11 +1,11 @@
 <aside class="overflow-hidden">
-  <h3>Contanct</h3>
+  {{/* <h3 class="text-lg">Contact</h3> */}}
   <dl class="contact text-base text-neutral-30 dark:text-neutral-80">
     {{ $author := .Site.Params.author }}
     {{ if $author.email }}
       <div>
         <dt>
-          <span class="icon-[carbon--email]"></span>
+          <span class="icon-[tabler--mail]"></span>
         </dt>
         <dd>
           <a href="mailto:{{ $author.email }}">
@@ -18,7 +18,7 @@
     {{ if $author.github }}
       <div>
         <dt>
-          <span class="icon-[carbon--logo-github]"></span>
+          <span class="icon-[bxl--github]"></span>
         </dt>
         <dd>
           <a href="https://github.com/{{ $author.github }}">
@@ -53,7 +53,7 @@
     {{ if $author.telegram }}
       <div>
         <dt>
-          <span class="icon-[tabler--brand-telegram]"></span>
+          <span class="icon-[bxl--telegram]"></span>
         </dt>
         <dd>
           <a href="https://t.me/{{ $author.telegram }}">
@@ -62,5 +62,19 @@
         </dd>
       </div>
     {{ end }}
+
+    {{ if $author.steam }}
+      <div>
+        <dt>
+          <span class="icon-[bxl--steam]"></span>
+        </dt>
+        <dd>
+          <a href="https://steamcommunity.com/id/{{ $author.steam }}/">
+            @{{ $author.steam }}
+          </a>
+        </dd>
+      </div>
+    {{ end }}
+
   </dl>
 </aside>
