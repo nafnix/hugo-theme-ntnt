@@ -23,18 +23,27 @@
       },
       // Add the IDs of extensions you want installed when the container is created.
       "extensions": [
-        "tamasfe.even-better-toml",
-        "davidanson.vscode-markdownlint",
-        "streetsidesoftware.code-spell-checker",
-        "GitHub.vscode-pull-request-github",
+        // https://marketplace.visualstudio.com/items?itemName=eliostruyf.vscode-front-matter
+        "eliostruyf.vscode-front-matter",
+        // https://marketplace.visualstudio.com/items?itemName=rusnasonov.vscode-hugo
         "rusnasonov.vscode-hugo",
+        // https://marketplace.visualstudio.com/items?itemName=budparr.language-hugo-vscode
         "budparr.language-hugo-vscode",
+        // https://marketplace.visualstudio.com/items?itemName=eliostruyf.vscode-hugo-themer
         "eliostruyf.vscode-hugo-themer",
+        // https://marketplace.visualstudio.com/items?itemName=kaellarkin.hugo-shortcode-syntax
+        "kaellarkin.hugo-shortcode-syntax",
+
         "bradlc.vscode-tailwindcss",
         "csstools.postcss",
         "antfu.iconify",
+
         "esbenp.prettier-vscode",
-        "naumovs.color-highlight"
+        "tamasfe.even-better-toml",
+        "davidanson.vscode-markdownlint",
+        "streetsidesoftware.code-spell-checker",
+        "naumovs.color-highlight",
+        "GitHub.vscode-pull-request-github"
       ]
     }
   },
