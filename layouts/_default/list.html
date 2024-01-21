@@ -5,18 +5,17 @@
         <section
           class="flex w-full flex-col gap-2 rounded-lg border p-6 transition hover:shadow-lg"
         >
-          <h2>
+          <h2 class="text-2xl">
             <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
           </h2>
 
           {{ if .GetTerms "tags" }}
-            <ul class="flex flex-wrap gap-2 text-sm">
+            <ul
+              class="flex flex-wrap gap-2 text-sm text-neutral-30 dark:text-neutral-70"
+            >
               {{ range .GetTerms "tags" }}
                 <li>
-                  <a
-                    href="{{ .RelPermalink }}"
-                    class="flex items-center gap-1 text-neutral-30 dark:text-neutral-70"
-                  >
+                  <a href="{{ .RelPermalink }}" class="flex items-center gap-1">
                     <span class="icon-[tabler--tag]"></span>
                     {{ .LinkTitle }}
                   </a>
