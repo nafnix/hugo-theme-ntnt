@@ -12,9 +12,11 @@
       {{ partial "header/index.html" . }}
 
 
-      <div class="container grid grid-cols-1 gap-4 py-8 md:grid-cols-5">
-        {{ partial "left-side.html" . }}
-        <main class="{{ .Kind }}-page md:col-span-4">
+      <div class="container grid grid-cols-1 gap-4 py-8 md:grid-cols-8">
+        <aside class="overflow-hidden md:col-span-2">
+          {{ partial "contact.html" . }}
+        </aside>
+        <main class="{{ .Kind }}-page md:col-span-6">
           {{ block "main" . }}{{ end }}
         </main>
       </div>

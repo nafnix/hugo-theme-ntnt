@@ -1,10 +1,11 @@
 <div @click.stop class="relative">
   <div class="search" :class="{ 'active' : isSearching }">
     <div @keyup.enter="search" class="search-box">
-      <button class="search-btn icon-[tabler--search]" @click="search"></button>
-      <input type="text" ref="searchInput" class="search-input" />
-
-      {{/* dark:bg-surface-variant-dark bg-surface-variant */}}
+      <button
+        class="search-box__btn icon-[tabler--search]"
+        @click="search"
+      ></button>
+      <input type="text" ref="searchInput" class="search-box__input" />
     </div>
 
     <button @click="isSearching = false" class="search-close-btn">

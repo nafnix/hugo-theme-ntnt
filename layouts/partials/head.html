@@ -8,21 +8,7 @@
   {{ end }}
 </title>
 
-{{- with resources.Get "css/_style.css" }}
-  {{- if eq hugo.Environment "development" }}
-    <link rel="stylesheet" href="{{ .RelPermalink }}" />
-  {{- else }}
-    {{- with . | minify | fingerprint }}
-      <link
-        rel="stylesheet"
-        href="{{ .RelPermalink }}"
-        integrity="{{ .Data.Integrity }}"
-        crossorigin="anonymous"
-      />
-    {{- end }}
-  {{- end }}
-{{- end }}
-
+<link rel="stylesheet" href="/css/style.css" crossorigin="anonymous" />
 
 <script src="/js/vue.global.prod.js"></script>
 <script src="/js/fuse.js"></script>
