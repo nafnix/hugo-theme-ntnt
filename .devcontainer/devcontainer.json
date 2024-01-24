@@ -43,7 +43,8 @@
         "davidanson.vscode-markdownlint",
         "streetsidesoftware.code-spell-checker",
         "naumovs.color-highlight",
-        "GitHub.vscode-pull-request-github"
+        "GitHub.vscode-pull-request-github",
+        "eamodio.gitlens"
       ]
     }
   },
