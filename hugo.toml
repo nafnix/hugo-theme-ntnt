@@ -26,16 +26,16 @@ weight = 20
     min = "0.116.0"
 
 [params.author]
-  # avatar = 'https://i.pravatar.cc/300'
-  email = 'example@brume.maskmy.id'
-  telegram = 'example'
-  telegram_link = 'examplelink'  # 如果有值，则使用该值作为链接
-  github = 'example'
-  bilibili = 'example'
-  bilibili_id = 'exampleid'    # 如果有值，则直接链接到主页，否则，以搜索的方式链接
-  steam = 'example'
-  x = 'example'
-  twitter = 'example'
+  # # avatar = 'https://i.pravatar.cc/300'    # 暂时没用上
+  # email = 'example@brume.maskmy.id'
+  # telegram = 'example'
+  # telegram_link = 'examplelink'  # 如果有值，则使用该值作为链接
+  # github = 'example'
+  # bilibili = 'example'
+  # bilibili_id = 'exampleid'    # 如果有值，则直接链接到主页，否则，以搜索的方式链接
+  # steam = 'example'
+  # x = 'example'
+  # twitter = 'example'
 
 [markup.highlight]
   style = 'nord'        # hugo 内置的代码高亮（chroma）主题名，当 noClasses 为 false 时，该值无效
