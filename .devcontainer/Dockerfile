@@ -4,7 +4,7 @@ FROM library/debian:latest
 ARG USER=vscode
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt update \
-    && apt install -y --no-install-recommends sudo zsh git curl wget apt-transport-https ca-certificates openssl \
+    && apt install -y --no-install-recommends nano sudo zsh git curl wget apt-transport-https ca-certificates openssl \
     && apt autoremove -y \
     && rm -rf /var/lib/apt/lists/* \
     && useradd -m -s /bin/zsh ${USER} \
@@ -48,7 +48,6 @@ ENV PATH="${PNPM_HOME}:$PATH"
 RUN <<EOT
     wget -qO- https://get.pnpm.io/install.sh | ENV="${HOME}/.zshrc" SHELL=/bin/zsh sh -
     pnpm env use -g lts
-    echo 'alias pn=pnpm' >> .zshrc
 EOT
 
 ARG OHMYZSH_HOME=${HOME}/.oh-my-zsh
@@ -60,4 +59,6 @@ RUN <<EOT
     sed -i 's|ZSH_THEME="robbyrussell"|ZSH_THEME="powerlevel10k/powerlevel10k"|g' .zshrc
     echo 'POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true' >> .zshrc
     hugo completion zsh > ${OHMYZSH_HOME}/plugins/git/_hugo
+    echo 'alias pn=pnpm' >> .zshrc
+    echo 'export EDITOR=/usr/bin/nano' >> .zshrc
 EOT
