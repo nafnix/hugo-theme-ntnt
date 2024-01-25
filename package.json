@@ -4,8 +4,8 @@
   "description": "",
   "scripts": {
     "dev": "hugo serve -D",
-    "dev-css": "postcss assets/css/tailwind.css -o static/css/style.css -w",
-    "build-css": "NODE_ENV=production postcss assets/css/tailwind.css -o static/css/style.css"
+    "dev-css": "postcss -w --verbose assets/css/tailwind.css -o assets/css/style.css",
+    "build-css": "NODE_ENV=production postcss assets/css/tailwind.css -o assets/css/style.css"
   },
   "keywords": [],
   "author": "Nafnix",

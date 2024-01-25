@@ -3,7 +3,7 @@
     <div class="flex flex-col gap-4">
       {{ range .Paginator.Pages }}
         <section
-          class="flex w-full flex-col gap-2 rounded-lg border p-6 transition hover:shadow-lg"
+          class="flex w-full flex-col gap-2 rounded border p-6 transition-all hover:-translate-y-1 hover:shadow-lg"
         >
           <h2 class="text-2xl">
             <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>

@@ -1,36 +1,95 @@
 {{ define "main" }}
   <h1>{{ with .Site.GetPage "section" "blog" }}{{ .Title }}{{ end }}</h1>
 
-  <div class=" space-y-4">
-    <h1 class="text-3xl">{{ .Title }}</h1>
-
-    <div>
-      {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-      {{ $dateHuman := .Date | time.Format "2006年1月2日" }}
-      <time
-        datetime="{{ $dateMachine }}"
-        class="text-sm text-neutral-30 dark:text-neutral-70"
-        >{{ $dateHuman }}</time
-      >
-    </div>
-  </div>
-
+  <h1 class="text-3xl">{{ .Title }}</h1>
+  {{ .TableOfContents }}
   <article class="markdown mt-5">{{ .Content }}</article>
 
-  <div class="mb-5 mt-14"></div>
+  <div class="mb-5 mt-12 space-y-4">
+    {{ $license := .Site.Params.license }}
+    {{ if $license }}
+      <section
+        class="relative w-full overflow-hidden bg-surface-variant p-4 text-neutral-variant-30 dark:bg-surface-variant-dark dark:text-neutral-variant-90"
+      >
+        {{ if $license.svg_path }}
+          <div
+            class="absolute -right-8 -top-8 h-[13rem] w-[13rem] bg-neutral-variant-60"
+            style="-webkit-mask-image: url('{{ $license.svg_path }}');mask-image: url('{{ $license.svg_path }}');mask-size: 100%;mask-repeat: no-repeat;"
+          ></div>
+        {{ end }}
 
-  {{- with .GetTerms "tags" }}
-    <ul class="tags">
-      {{- range . }}
-        <li>
-          <a
-            href="{{ .RelPermalink }}"
-            class="shadow-sm transition hover:shadow-md"
-          >
-            <span class="icon-[tabler--tag] text-sm"></span>{{ .LinkTitle }}
-          </a>
-        </li>
-      {{- end }}
-    </ul>
-  {{- end }}
+
+        <div class="flex flex-col" style="width: calc(100% - 13rem);">
+          <div>
+            <a class="break-all text-lg font-bold" href="{{ .Permalink }}">
+              {{ .Title }}
+            </a>
+          </div>
+
+          <dl class="mt-5 flex gap-10">
+            <div>
+              <dt class="text-sm">作者</dt>
+              <dd>
+                {{ .Site.Params.author.name }}
+              </dd>
+            </div>
+
+            <div>
+              <dt class="text-sm">发布日期</dt>
+              <dd>
+                {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+                {{ $dateHuman := .Date | time.Format "2006年1月2日" }}
+                <time datetime="{{ $dateMachine }}" class="">
+                  {{ $dateHuman }}
+                </time>
+              </dd>
+            </div>
+
+            {{ if not (eq .Lastmod .Date) }}
+              <div>
+                <dt class="text-sm">修改日期</dt>
+                <dd>
+                  {{ $dateMachine := .Lastmod | time.Format "2006-01-02T15:04:05-07:00" }}
+                  {{ $dateHuman := .Lastmod | time.Format "2006年1月2日" }}
+                  <time datetime="{{ $dateMachine }}" class="">
+                    {{ $dateHuman }}
+                  </time>
+                </dd>
+              </div>
+            {{ end }}
+
+
+            <div>
+              <dt class="text-sm">版权协议</dt>
+              <dd>
+                {{ if $license.link }}
+                  <a
+                    href="{{ $license.link }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {{ $license.display }}
+                  </a>
+                {{ else }}
+                  <span>{{ $license.display }}</span>
+                {{ end }}
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+    {{ end }}
+
+    {{- with .GetTerms "tags" }}
+      <ul class="tags">
+        {{- range . }}
+          <li>
+            <a href="{{ .RelPermalink }}">
+              <span class="icon-[tabler--tag] text-sm"></span>{{ .LinkTitle }}
+            </a>
+          </li>
+        {{- end }}
+      </ul>
+    {{- end }}
+  </div>
 {{ end }}

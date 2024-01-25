@@ -10,3 +10,5 @@ node_modules
 .hugo_build.lock
 public
 content
+
+assets/css/style.css

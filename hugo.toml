@@ -1,5 +1,5 @@
 baseURL = 'https://example.org/'
-languageCode = 'en-us'
+languageCode = 'zh-cmn'
 title = 'My New Hugo Site'
 
 hasCJKLanguage = true
@@ -25,17 +25,27 @@ weight = 20
     extended = false
     min = "0.116.0"
 
+[params.license]  # optional
+  display = 'WTFPL'
+  link = 'http://www.wtfpl.net/'  # optional
+  svg_path = '/license/wtfpl.svg' # optional
+
+  # display = 'CC BY-NC-SA 4.0'
+  # link = 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans'  # optional
+  # svg_path = '/license/logo-cc.svg'                                        # optional
+
 [params.author]
-  # # avatar = 'https://i.pravatar.cc/300'    # 暂时没用上
-  # email = 'example@brume.maskmy.id'
-  # telegram = 'example'
-  # telegram_link = 'examplelink'  # 如果有值，则使用该值作为链接
-  # github = 'example'
-  # bilibili = 'example'
-  # bilibili_id = 'exampleid'    # 如果有值，则直接链接到主页，否则，以搜索的方式链接
-  # steam = 'example'
-  # x = 'example'
-  # twitter = 'example'
+  name = ''
+#   # avatar = 'https://i.pravatar.cc/300'    # 暂时没用上
+#   email = 'example@brume.maskmy.id'
+#   telegram = 'example'
+#   telegram_link = 'examplelink'  # 如果有值，则使用该值作为链接
+#   github = 'example'
+#   bilibili = 'example'
+#   bilibili_id = 'exampleid'    # 如果有值，则直接链接到主页，否则，以搜索的方式链接
+#   steam = 'example'
+#   x = 'example'
+#   twitter = 'example'
 
 [markup.highlight]
   style = 'nord'        # hugo 内置的代码高亮（chroma）主题名，当 noClasses 为 false 时，该值无效

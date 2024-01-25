@@ -2,9 +2,8 @@
   <ul class="tags">
     {{ range .Data.Terms.Alphabetical }}
       <li>
-        <a href="{{ .Page.Permalink }}" class="transition hover:shadow-md">
+        <a href="{{ .Page.Permalink }}">
           <span class="icon-[tabler--tag] text-sm"></span>{{ .Page.Title }}
-          {{/*  <span>{{ .Count }}</span>  */}}
         </a>
       </li>
     {{ end }}

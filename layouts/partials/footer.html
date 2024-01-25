@@ -2,14 +2,16 @@
   <div class="container flex flex-wrap gap-x-1">
     <div>Copyright &copy; {{ now.Year }}</div>
     |
-    <a
-      href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      CC BY-NC-SA 4.0 DEED
-    </a>
-    |
+    {{ with .Site.Params.license }}
+      {{ if .link }}
+        <a href="{{ .link }}" target="_blank" rel="noopener noreferrer">
+          {{ .display }}
+        </a>
+      {{ else }}
+        <span>{{ .display }}</span>
+      {{ end }}
+      |
+    {{ end }}
     <div>
       Powered by
       <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">
